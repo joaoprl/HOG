@@ -6,6 +6,7 @@ Links uteis:
 
 1. https://software.intel.com/en-us/node/529070
 2. http://scikit-image.org/docs/dev/auto_examples/plot_hog.html
-3. http://mccormickml.com/2013/05/09/hog-person-detector-tutorial/
-4. http://www.mathworks.com/help/vision/ref/extracthogfeatures.html?requestedDomain=www.mathworks.com&requestedDomain=www.mathworks.com
+3. http://www.mathworks.com/help/vision/ref/extracthogfeatures.html
+4. http://mccormickml.com/2013/05/09/hog-person-detector-tutorial/
 5. http://mccormickml.com/2013/05/07/gradient-vectors/
+6. http://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf
