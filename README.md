@@ -8,3 +8,4 @@ Links uteis:
 2. http://scikit-image.org/docs/dev/auto_examples/plot_hog.html
 3. http://mccormickml.com/2013/05/09/hog-person-detector-tutorial/
 4. http://www.mathworks.com/help/vision/ref/extracthogfeatures.html?requestedDomain=www.mathworks.com&requestedDomain=www.mathworks.com
+5. http://mccormickml.com/2013/05/07/gradient-vectors/
