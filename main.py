@@ -35,9 +35,13 @@ def getGradient(image, (x,y), (w,h), draw):
             if(mag > 500):
                 x_vec = x_vec / 500
                 y_vec = y_vec / 500
+
+                aux = x_vec
+                x_vec = y_vec
+                y_vec = -aux
     
                 print x_vec, y_vec
-                drawVector(draw, (x * 8, y * 8),(x_vec + x * 8,y_vec + y * 8))
+                drawVector(draw, (x * 8 + 4, y * 8 + 4),(x_vec + x * 8 + 4,y_vec + y * 8 + 4))
     
 
 def drawVector(draw, (x1, y1), (x2, y2)):
@@ -46,7 +50,7 @@ def drawVector(draw, (x1, y1), (x2, y2)):
                         
 def main():
     print str((1, 2) + (3, 4))
-    img = Image.open("penguin.jpg")
+    img = Image.open("image.jpg")
     img = img.convert("RGBA")
     pix = img.load() # pix[x,y] = (r,g,b)
     draw = ImageDraw.Draw(img)    
