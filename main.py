@@ -86,14 +86,8 @@ def drawVector(draw, (x1, y1), (x2, y2)):
 def main():
 
     img = Image.open("cavalo.png")
-    img = img.convert("RGBA")   
-    pix = img.load() # pix[x,y] = (r,g,b)
-    draw = ImageDraw.Draw(img)    
-
-    width,height = img.size
-
     img_grey = img.convert('L') # convert the image to greyscale
-    pix_grey = img_grey.load()
+    pix_grey = img_grey.load() # pix[x,y] = (r,g,b)
     draw_grey = ImageDraw.Draw(img_grey)
 
     """
@@ -104,17 +98,13 @@ def main():
         draw_grey.line((0,i,width,i))
     """
     
-    # draw.line((0,0,100,100), fill=(0,0,0,0), width=2)
-#    drawVector(draw_grey, (0,0), (100,
-
-    getGradient(pix_grey, (width, height), draw_grey)
+    getGradient(pix_grey, img.size, draw_grey)
     
     img_grey.show()
 
     img_grey.save("output.png")
 
     return 0
-
 
 if __name__ == "__main__":
     main()    
