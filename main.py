@@ -17,7 +17,6 @@ def getGradient(image, (w,h), draw):
                 y_vec = 0
             else:
                 x_vec = image[x + 1, y] - image[x - 1, y]
-                print y, h
                 y_vec = image[x, y + 1] - image[x, y - 1]
 
             v = pow(x_vec, 2) + pow(y_vec, 2)            
@@ -43,8 +42,8 @@ def getGradient(image, (w,h), draw):
             
     output = []
             
-    for x in range(0, w // 8):
-        for y in range(0, h // 8):
+    for x in range(0, w // 8 - 1):
+        for y in range(0, h // 8 - 1):
             block = histograms.get((x,y)) \
                + histograms.get((x + 1, y)) \
                + histograms.get((x, y + 1)) \
@@ -59,7 +58,8 @@ def getGradient(image, (w,h), draw):
 
             output += block
                 
-    print output
+#    print output
+    
     print len(output)
     
     for x in range (0, w//8):
@@ -84,7 +84,7 @@ def drawVector(draw, (x1, y1), (x2, y2)):
 
                         
 def main():
-    print str((1, 2) + (3, 4))
+
     img = Image.open("cavalo.png")
     img = img.convert("RGBA")   
     pix = img.load() # pix[x,y] = (r,g,b)
@@ -95,11 +95,6 @@ def main():
     img_grey = img.convert('L') # convert the image to greyscale
     pix_grey = img_grey.load()
     draw_grey = ImageDraw.Draw(img_grey)
-
-    z = 10 * [0]
-    print len(z)
-    for i in range(0, len(z)):
-        print i, z[i]
 
     """
     for i in xrange(7, width, 8):
