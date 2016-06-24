@@ -8,7 +8,7 @@ import operator
 def getGradient(image, (w,h), draw):
 
     gradients = {}
-    vectors = {}
+#    vectors = {}
     histograms = {}
     for x in range(0, w):
         for y in range(0, h):
@@ -25,9 +25,9 @@ def getGradient(image, (w,h), draw):
 
             gradients[x, y] = (mag, ang)
 
-            vector = vectors.get((x//8,y//8), (0,0))
+#            vector = vectors.get((x//8,y//8), (0,0))
 
-            vectors[x/8,y/8] = map(operator.add, vector,[x_vec,y_vec])
+#            vectors[x/8,y/8] = map(operator.add, vector,[x_vec,y_vec])
 
             angRad = math.degrees(ang)
             
@@ -61,7 +61,7 @@ def getGradient(image, (w,h), draw):
 #    print output
     
     print len(output)
-    
+"""   
     for x in range (0, w//8):
         for y in range(0,h//8):        
             [x_vec, y_vec] = vectors.get((x,y), (0,0))
@@ -77,7 +77,7 @@ def getGradient(image, (w,h), draw):
                 y_vec = -aux
     
                 drawVector(draw, (x * 8 + 4, y * 8 + 4),(x_vec + x * 8 + 4,y_vec + y * 8 + 4))
-    
+"""    
 
 def drawVector(draw, (x1, y1), (x2, y2)):
     draw.line((x1,y1,x2,y2), width=1)
