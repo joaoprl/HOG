@@ -7,8 +7,8 @@ import operator
 
 def getHistograms(image, (w,h)):
     histograms = {}
-    for x in range(0, w):
-        for y in range(0, h):
+    for y in range(0, h):
+        for x in range(0, w):
             if x == 0 or x == w - 1 or y == 0 or y == h - 1:
                 x_vec = 0
                 y_vec = 0
@@ -37,9 +37,10 @@ def getHistograms(image, (w,h)):
 def createOutput(histograms, (w, h)):
 
     output = []
-            
-    for x in range(0, w // 8 - 1):
-        for y in range(0, h // 8 - 1):
+
+    for y in range(0, h // 8 - 1):
+        for x in range(0, w // 8 - 1):
+
             block = histograms.get((x,y)) \
                + histograms.get((x + 1, y)) \
                + histograms.get((x, y + 1)) \
@@ -66,6 +67,8 @@ def main():
     output = createOutput(histograms, img_grey.size)
     
     print len(output)
+    for i in range(0, len(output)):
+        print output[i]
     
     return 0
 

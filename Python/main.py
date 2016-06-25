@@ -4,11 +4,12 @@ import Image
 import ImageDraw
 import math
 import operator
+from multiprocessing import Process, Manager, Lock
 
-def getHistograms(image, (w,h)):
-    histograms = {}
-    for x in range(0, w):
-        for y in range(0, h):
+def getPartialHistogram(image, (xbegin, xend), (ybegin,yend), (w,h), histograms):
+    
+    for y in range(0, h):
+        for x in range(0, w):
             if x == 0 or x == w - 1 or y == 0 or y == h - 1:
                 x_vec = 0
                 y_vec = 0
@@ -31,15 +32,37 @@ def getHistograms(image, (w,h)):
               
             histograms.update({(x//8, y//8) : histogram})
 
+def getHistograms(image, (w,h)):
+    
+    manager = Manager()
+    histograms = manager.dict()
+
+    threads = []
+    nThreads = 8
+    lhistograms = []
+
+    for i in range(0, nThreads):
+        # t = threading.Thread(target=getPartialHistogram, args=(image, (0, i * h // nThreads), (w,  (i + 1) * h // nThreads), (w, h), histograms))
+        histogram = {}
+        t = Process(target=getPartialHistogram, args=(image, (0, i * h // nThreads), (w,  (i + 1) * h // nThreads), (w, h), histogram))
+        t.start()
+        threads.append(t)
+        lhistograms.append(histogram)
+
+    for i in range(0, nThreads):
+        threads[i].join()
+        histograms.update(lhistograms[i])
+    
     return histograms
     
 
 def createOutput(histograms, (w, h)):
 
     output = []
-            
-    for x in range(0, w // 8 - 1):
-        for y in range(0, h // 8 - 1):
+
+    for y in range(0, h // 8 - 1):
+        for x in range(0, w // 8 - 1):
+
             block = histograms.get((x,y)) \
                + histograms.get((x + 1, y)) \
                + histograms.get((x, y + 1)) \
@@ -66,6 +89,8 @@ def main():
     output = createOutput(histograms, img_grey.size)
     
     print len(output)
+    for i in range(0, len(output)):
+        print output[i]
     
     return 0
 
