@@ -5,10 +5,7 @@ import ImageDraw
 import math
 import operator
 
-def getGradient(image, (w,h), draw):
-
-    gradients = {}
-#    vectors = {}
+def getHistograms(image, (w,h)):
     histograms = {}
     for x in range(0, w):
         for y in range(0, h):
@@ -23,12 +20,6 @@ def getGradient(image, (w,h), draw):
             mag = pow( v, 0.5)
             ang = math.atan2(y_vec, x_vec)
 
-            gradients[x, y] = (mag, ang)
-
-#            vector = vectors.get((x//8,y//8), (0,0))
-
-#            vectors[x/8,y/8] = map(operator.add, vector,[x_vec,y_vec])
-
             angRad = math.degrees(ang)
             
             histogram = histograms.get((x//8, y//8), 9 * [0])
@@ -39,7 +30,12 @@ def getGradient(image, (w,h), draw):
             histogram[pos2] += (1 - (20 - ((x % 10.0) % 20)) / 20) * mag
               
             histograms.update({(x//8, y//8) : histogram})
-            
+
+    return histograms
+    
+
+def createOutput(histograms, (w, h)):
+
     output = []
             
     for x in range(0, w // 8 - 1):
@@ -55,55 +51,22 @@ def getGradient(image, (w,h), draw):
             if mag != 0:
                 for i in range(0, len(block)):
                     block[i] /= mag
-
             output += block
-                
-#    print output
+
+    return output
     
-    print len(output)
-"""   
-    for x in range (0, w//8):
-        for y in range(0,h//8):        
-            [x_vec, y_vec] = vectors.get((x,y), (0,0))
-            
-            v = pow(x_vec, 2) + pow(y_vec, 2)
-            mag = pow( v, 0.5)
-            if(mag > 500):
-                x_vec = x_vec / 500
-                y_vec = y_vec / 500
-
-                aux = x_vec
-                x_vec = y_vec
-                y_vec = -aux
-    
-                drawVector(draw, (x * 8 + 4, y * 8 + 4),(x_vec + x * 8 + 4,y_vec + y * 8 + 4))
-"""    
-
-def drawVector(draw, (x1, y1), (x2, y2)):
-    draw.line((x1,y1,x2,y2), width=1)
-
-                        
 def main():
 
-    img = Image.open("cavalo.png")
+    img = Image.open(sys.argv[1])
     img_grey = img.convert('L') # convert the image to greyscale
     pix_grey = img_grey.load() # pix[x,y] = (r,g,b)
     draw_grey = ImageDraw.Draw(img_grey)
 
-    """
-    for i in xrange(7, width, 8):
-        draw_grey.line((i,0,i,height))
+    histograms = getHistograms(pix_grey, img_grey.size)
+    output = createOutput(histograms, img_grey.size)
     
-    for i in xrange(7, height, 8):
-        draw_grey.line((0,i,width,i))
-    """
+    print len(output)
     
-    getGradient(pix_grey, img.size, draw_grey)
-    
-    img_grey.show()
-
-    img_grey.save("output.png")
-
     return 0
 
 if __name__ == "__main__":
