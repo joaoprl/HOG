@@ -1,0 +1,9 @@
+
+public class HogGradients implements Runnable{
+
+	@Override
+	public void run() {
+		
+	}
+
+}

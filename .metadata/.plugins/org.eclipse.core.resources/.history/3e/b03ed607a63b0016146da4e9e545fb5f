@@ -1,0 +1,14 @@
+
+public class HogGradients implements Runnable{
+	Hog hog;
+	public HogGradients(Hog hog){
+		this.hog = hog;
+	}
+
+	@Override
+	public void run() {
+		System.out.println("Oi");
+		
+	}
+
+}

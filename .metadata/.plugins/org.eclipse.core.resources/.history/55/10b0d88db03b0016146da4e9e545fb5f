@@ -1,0 +1,14 @@
+
+public class HogOutput implements Runnable{
+	
+	public HogOutput(){
+		
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

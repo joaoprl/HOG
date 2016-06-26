@@ -1,0 +1,18 @@
+
+public class HogOutput implements Runnable{
+	
+	Hog hog;
+	double[][][] histograms;
+	
+	public HogOutput(Hog hog, double[][][] histograms){
+		this.hog = hog;
+		this.histograms = histograms;
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

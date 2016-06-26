@@ -1,0 +1,15 @@
+
+public class HogGradients implements Runnable{
+	Hog hog;
+	
+	public HogGradients(Hog hog, double[][][] histograms){
+		this.hog = hog;
+	}
+
+	@Override
+	public void run() {
+		System.out.println("Oi");
+		
+	}
+
+}
