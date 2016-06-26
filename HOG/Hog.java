@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 public class Hog {
 	
 	private BufferedImage image = null;
-	private int nThreads = 1;	
+        private int nThreads = 8;
 
 	public Hog(String file){
 		BufferedImage colorImage = null;
@@ -25,7 +25,7 @@ public class Hog {
 	}
 	
 	public double[][][] getHistograms(){
-		double [][][] histograms = new double[image.getWidth() / 8][image.getHeight() / 8][9];
+		double [][][] histograms = new double[image.getWidth() / 8 + 1][image.getHeight() / 8 + 1][9];
 		
 		Thread[] threads = new Thread[nThreads];
 		for(int i = 0; i < nThreads; i++){
@@ -68,7 +68,7 @@ public class Hog {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-		}
+		}/*
 		
 		for(int x = 0; x < image.getWidth() / 8 - 1; x++){
 			for(int y = 0; y < image.getHeight() / 8 - 1; y++){
@@ -76,7 +76,7 @@ public class Hog {
 						System.out.print(output[x][y][z] + " ");
 				System.out.print("\n");
 			}
-		}
+		}*/
 		return output;
 	}
 
