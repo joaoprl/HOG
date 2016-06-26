@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.swing.GrayFilter"/>
+<fullyQualifiedTypeName name="java.awt.image.FilteredImageSource"/>
+<fullyQualifiedTypeName name="java.awt.image.ImageFilter"/>
+<fullyQualifiedTypeName name="java.awt.image.ImageProducer"/>
+<fullyQualifiedTypeName name="java.awt.Toolkit"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.awt.Image"/>
+<fullyQualifiedTypeName name="java.awt.color.ColorSpace"/>
+<fullyQualifiedTypeName name="java.awt.image.ColorConvertOp"/>
+</qualifiedTypeNameHistroy>
