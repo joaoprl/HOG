@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 public class Hog {
 	
 	private BufferedImage image = null;
-	private int nThreads = 4;	
+	private int nThreads = 1;	
 
 	public Hog(String file){
 		BufferedImage colorImage = null;
@@ -25,7 +25,7 @@ public class Hog {
 	}
 	
 	public double[][][] getHistograms(){
-		double [][][] histograms = new double[image.getWidth()][image.getHeight()][9];
+		double [][][] histograms = new double[image.getWidth() / 8][image.getHeight() / 8][9];
 		
 		Thread[] threads = new Thread[nThreads];
 		for(int i = 0; i < nThreads; i++){
@@ -41,8 +41,8 @@ public class Hog {
 			}
 		}
 		/*
-		for(int x = 0; x < image.getWidth(); x++){				
-			for(int y = 0; y < image.getHeight(); y++){
+		for(int x = 0; x < image.getWidth() / 8; x++){				
+			for(int y = 0; y < image.getHeight() / 8; y++){
 				for(int z = 0; z < 9; z++)
 					System.out.print(histograms[x][y][z] + " ");
 				System.out.print("\n");
@@ -54,7 +54,7 @@ public class Hog {
 
 	public double[][][] getOutput(double[][][] histograms){
 		
-		double output[][][] = new double[image.getWidth() - 1][image.getHeight() - 1][36];
+		double output[][][] = new double[image.getWidth()/8 - 1][image.getHeight()/8 - 1][36];
 				
 		Thread[] threads = new Thread[nThreads];
 		for(int i = 0; i < nThreads; i++){
@@ -70,15 +70,14 @@ public class Hog {
 			}
 		}
 		
-		for(int x = 0; x < image.getWidth() / 8 -1; x++){
-			for(int y = 0; y < image.getHeight() / 8 -1; y++){
+		for(int x = 0; x < image.getWidth() / 8 - 1; x++){
+			for(int y = 0; y < image.getHeight() / 8 - 1; y++){
 				for(int z = 0; z < 36; z++)
 						System.out.print(output[x][y][z] + " ");
 				System.out.print("\n");
 			}
 		}
 		return output;
-
 	}
 
 	public int getValue(int x, int y){
@@ -91,5 +90,4 @@ public class Hog {
 	public int getHeight(){
 		return image.getHeight();
 	}
-
 }

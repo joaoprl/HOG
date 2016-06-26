@@ -37,8 +37,8 @@ public class HogGradients implements Runnable{
 				int pos1 = (int)((angRad + 10) / 20 - 1) % 9;
 				int pos2 = (int)((angRad + 10) / 20) % 9;
 
-				histograms[x][y][pos1] += ((20 - ((angRad % 10.0) % 20)) / 20) * mag;
-				histograms[x][y][pos2] += (1 - (20 - ((angRad % 10.0) % 20)) / 20) * mag;
+				histograms[x / 8][y / 8][pos1] += ((20 - ((angRad % 10.0) % 20)) / 20) * mag;
+				histograms[x / 8][y / 8][pos2] += (1 - (20 - ((angRad % 10.0) % 20)) / 20) * mag;
 
 			}
 		}

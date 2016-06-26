@@ -23,7 +23,7 @@ public class HogOutput implements Runnable{
 				for(int a = 0; a < 2; a++){
 					for(int b = 0; b < 2; b++){
 						for(int z = 0; z < 9; z++){
-							output[x][y][counter] = histograms[x * 8 + a][y * 8 + b][z];
+							output[x][y][counter] = histograms[x + a][y + b][z];
 							mag += output[x][y][counter];
 							counter++;				        				
 						}
