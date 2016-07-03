@@ -2,21 +2,25 @@
 public class HogGradients implements Runnable{
 	Hog hog;
 	double [][][]histograms;
+	double [][][]vectors;
 	int ybegin, yend;
 	
-	public HogGradients(Hog hog, double[][][] histograms, int begin, int end){
+	public HogGradients(Hog hog, double[][][] histograms, int begin, int end, double[][][] vectors){
 		this.hog = hog;
 		this.histograms = histograms;
+		this.vectors = vectors;
 		this.ybegin = begin;
 		this.yend = end;
+		
 	}
 
 	@Override
-	public void run() {		
+	public void run() {
+		
 
-		for(int x = 0; x < hog.getWidth(); x++){
-			for(int y = ybegin; y < yend; y++){
-
+		for(int y = ybegin; y < yend; y++){
+			for(int x = 0; x < hog.getWidth(); x++){
+				
 				double x_vec, y_vec;
 
 				if (x == 0 || x == hog.getWidth() - 1 || y == 0 || y == hog.getHeight() - 1){
@@ -39,10 +43,12 @@ public class HogGradients implements Runnable{
 
 				histograms[x / 8][y / 8][pos1] += ((20 - ((angRad % 10.0) % 20)) / 20) * mag;
 				histograms[x / 8][y / 8][pos2] += (1 - (20 - ((angRad % 10.0) % 20)) / 20) * mag;
+				
+				vectors[x / 8][y / 8][0] += x_vec;
+				vectors[x / 8][y / 8][1] += y_vec;
 
 			}
-		}
-	
+		}		
 	}
 
 }

@@ -1,7 +1,9 @@
 
+
 public class Main {
    public static void main(String[] args) {
-	   String file = "universe.jpg";
+	   
+	   String file = "tiger.jpg";
        if(args.length == 1){
 	        file = args[0];
        }

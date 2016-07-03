@@ -16,8 +16,8 @@ public class HogOutput implements Runnable{
 
 	@Override
 	public void run() {
-		for(int x = 0; x < hog.getWidth() / 8 - 1; x++){
-			for(int y = ybegin; y < yend; y++){
+		for(int y = ybegin; y < yend; y++){
+			for(int x = 0; x < hog.getWidth() / 8 - 1; x++){
 				int counter = 0;
 				double mag = 0;
 				for(int a = 0; a < 2; a++){
