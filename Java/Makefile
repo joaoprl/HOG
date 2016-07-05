@@ -1,12 +1,13 @@
 
 all:
 	javac Main.java
+	mkdir -p output
 run:	
 	bash run.sh
 magic:
 	bash magic.sh	
 clean:
-	rm *.class
-	rm output/*
+	@rm -f *.class
+	@rm -f output/*
 
 

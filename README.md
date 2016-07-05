@@ -16,6 +16,12 @@ make clean - para limpar o código compilado e a pasta output
 make magic - para rodar todas as imagens para um grupo pré-determinado de threads. A saída utilizada é a saída padrão (terminal)
 
 
+Para executar apenas uma imagem que deve estar na pasta input, execute o seguinte comando:
+java Main nome_da_imagem numero_de_threads
+
+A imagem de amostra estará na pasta output, assim como os arquivos gerados. Resultados a respeito do speedup serão impressos na tela.
+
+
 Links uteis:
 
 1. https://software.intel.com/en-us/node/529070
