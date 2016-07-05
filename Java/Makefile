@@ -1,10 +1,11 @@
 
 all:
-	javac parallel/Main.java
-	javac serial/Main.java
+	javac Main.java
 run:
+	for FILE in input/* ; do echo ${FILE##*/}; java Main ${FILE##*/} >> output/output.dat; done
 
 clean:
-	rm parallel/*.class
-	rm serial/*.class
-	
+	rm *.class
+	rm output/*
+
+
