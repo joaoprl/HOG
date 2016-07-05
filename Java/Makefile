@@ -1,9 +1,10 @@
 
 all:
 	javac Main.java
-run:
-	for FILE in input/* ; do echo ${FILE##*/}; java Main ${FILE##*/} >> output/output.dat; done
-
+run:	
+	bash run.sh
+magic:
+	bash magic.sh	
 clean:
 	rm *.class
 	rm output/*
