@@ -1,6 +1,20 @@
+
 HOG - Histogram of Oriented Gradients Feature Extractor
 
+
 Paralelização de um extrator de features de imagens usando o método de Histograma de Gradientes Orientados.
+
+
+Utilização:
+Todas as imagens devem estar na pastar input, deve haver um diretório output criado.
+
+
+Execute:
+make - para compilar o código
+make run - para rodar todas as imagens na pasta input, os dados de saída são salvos no arquivo output.dat
+make clean - para limpar o código compilado e a pasta output
+make magic - para rodar todas as imagens para um grupo pré-determinado de threads. A saída utilizada é a saída padrão (terminal)
+
 
 Links uteis:
 

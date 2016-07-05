@@ -31,29 +31,29 @@ public class Parallel {
 	toc = System.nanoTime();
 		
 	histogramsDuration = (toc - tic) / 1000l;
-	/*
-	  for(double[][] arr : histograms){
-	  for(double [] ar : arr){
-	  for(double value : ar)
-	  writer.print(value + " ");
-	  writer.print("\n");
-	  }
-	  }
-	  writer.print("\n");*/
+	
+	for(double[][] arr : histograms){
+	    for(double [] ar : arr){
+		for(double value : ar)
+		    writer.print(value + " ");
+		writer.print("\n");
+	    }
+	}
+	writer.print("\n");
 
 	tic = System.nanoTime();
 	double[][][] output = hog.getOutput(histograms);
 	toc = System.nanoTime();
 		
 	outputDuration = (toc - tic) / 1000l;
-	/*
-	  for(double[][] arr : output){
-	  for(double [] ar : arr){
-	  for(double value : ar)
-	  writer.print(value + " ");
-	  }
-	  }
-	  writer.print("\n");*/
+	
+	for(double[][] arr : output){
+	    for(double [] ar : arr){
+		for(double value : ar)
+		    writer.print(value + " ");
+	    }
+	}
+	writer.print("\n");
 
 	writer.close();
 
